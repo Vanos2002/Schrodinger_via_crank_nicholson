@@ -107,3 +107,5 @@ Zákon zachování $p + J_+ + J_- \approx 1$ je splněn s odchylkou řádu $10^{
 
 <img width="1488" height="1622" alt="fig2_time_evolution" src="https://github.com/user-attachments/assets/4d2caa0d-8d7f-40ad-96b1-317cd2687154" />
 
+<img width="1774" height="740" alt="fig3_convergence" src="https://github.com/user-attachments/assets/22febcd1-374b-4798-a632-25e906465578" />
+
