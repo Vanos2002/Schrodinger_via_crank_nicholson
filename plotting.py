@@ -24,16 +24,10 @@ X_MIN, X_MAX = -25.0, 25.0
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Pomocná funkce: načti soubor robustně bez ohledu na počet sloupců
+# Pomocná funkce: načte soubor robustně bez ohledu na počet sloupců
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _load_prob_file(fname):
-    """
-    Načte soubor s pravděpodobnostmi. Robustně zvládá:
-      - 4 sloupce: t  p  J_plus  J_minus                (starý formát)
-      - 7 sloupců: t  p  J_plus  J_minus  Jp_cum  Jm_cum  conserv  (nový formát)
-    Vrací dict s numpy poli; chybějící sloupce se dopočítají nebo vrátí None.
-    """
     if not os.path.exists(fname):
         raise FileNotFoundError(fname)
 
@@ -52,7 +46,7 @@ def _load_prob_file(fname):
         mask = np.isfinite(d).all(axis=1)
         d = d[mask]
         return dict(t=d[:,0], p=d[:,1], j_plus=d[:,2], j_minus=d[:,3],
-                    Jp_cum=d[:,4], Jm_cum=d[:,5], conserv=d[:,6])
+                    Jp_cumul=d[:,4], Jm_cumul=d[:,5], conserv=d[:,6])
 
     elif ncols == 4:
         # Starý formát – kumulativní toky musíme dopočítat integrací
@@ -65,11 +59,11 @@ def _load_prob_file(fname):
         j_plus = d[:, 2]    # okamžitý tok (ven vpravo)
         j_minus = d[:, 3]   # okamžitý tok (ven vlevo)
         dt = np.diff(t, prepend=t[0])
-        Jp_cum  = np.cumsum(j_plus  * dt)
-        Jm_cum  = np.cumsum(j_minus * dt)
-        conserv = p + Jp_cum + Jm_cum
+        Jp_cumul  = np.cumsum(j_plus  * dt)
+        Jm_cumul  = np.cumsum(j_minus * dt)
+        conserv = p + Jp_cumul + Jm_cumul
         return dict(t=t, p=p, j_plus=j_plus, j_minus=j_minus,
-                    Jp_cum=Jp_cum, Jm_cum=Jm_cum, conserv=conserv)
+                    Jp_cumul=Jp_cumul, Jm_cumul=Jm_cumul, conserv=conserv)
 
     else:
         raise ValueError(
@@ -180,7 +174,7 @@ def plot_time_evolution(prob_file="wave_prob.dat",
         print(f"  ✗  {prob_file} nenalezen"); return
 
     t      = r["t"];       p      = r["p"]
-    Jp_cum = r["Jp_cum"];  Jm_cum = r["Jm_cum"]
+    Jp_cumul = r["Jp_cumul"];  Jm_cumul = r["Jm_cumul"]
     j_plus = r["j_plus"];  j_minus= r["j_minus"]
     conserv= r["conserv"]
 
@@ -189,8 +183,8 @@ def plot_time_evolution(prob_file="wave_prob.dat",
     # Panel 1: kumulativní veličiny a zachování
     ax = axes[0]
     ax.plot(t, p,       color="#2196F3", lw=2,   label=r"$p(T)$  v $[-7,7]$")
-    ax.plot(t, Jp_cum,  color="#E91E63", lw=2,   label=r"$J_+(T)$ kum. (pravá hranice)")
-    ax.plot(t, Jm_cum,  color="#4CAF50", lw=2,   label=r"$J_-(T)$ kum. (levá hranice)")
+    ax.plot(t, Jp_cumul,  color="#E91E63", lw=2,   label=r"$J_+(T)$ kum. (pravá hranice)")
+    ax.plot(t, Jm_cumul,  color="#4CAF50", lw=2,   label=r"$J_-(T)$ kum. (levá hranice)")
     ax.plot(t, conserv, "k",             lw=1.2, ls="--",
             label=r"$p + J_+ + J_-$  (zachování)")
     ax.axhline(1.0, color="gray", lw=0.7, ls=":")
@@ -247,8 +241,8 @@ def plot_convergence(output="fig3_convergence.png"):
         results.append({
             "dx":      dx,
             "p":       r["p"][idx],
-            "Jp_cum":  r["Jp_cum"][idx],
-            "Jm_cum":  r["Jm_cum"][idx],
+            "Jp_cumul":  r["Jp_cumul"][idx],
+            "Jm_cumul":  r["Jm_cumul"][idx],
             "conserv": r["conserv"][idx],
         })
 
@@ -257,8 +251,8 @@ def plot_convergence(output="fig3_convergence.png"):
 
     dxs  = np.array([r["dx"]      for r in results])
     ps   = np.array([r["p"]       for r in results])
-    Jps  = np.array([r["Jp_cum"]  for r in results])
-    Jms  = np.array([r["Jm_cum"]  for r in results])
+    Jps  = np.array([r["Jp_cumul"]  for r in results])
+    Jms  = np.array([r["Jm_cumul"]  for r in results])
     cons = np.array([r["conserv"] for r in results])
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
