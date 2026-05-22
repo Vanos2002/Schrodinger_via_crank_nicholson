@@ -93,11 +93,11 @@ Okrajové podmínky jsou Dirichletovy ($\psi = 0$ na krajích), absorpční imag
 
 ### Konvergenční studie
 
-Program automaticky spustí tři simulace s $\Delta x \in \{0{,}1,\; 0{,}05,\; 0{,}025\}$ a $\Delta t = \Delta x^2 / 4$ do času $T = 1$. Výsledky se porovnávají s nejjemnější sítí.
+Program automaticky spustí tři simulace s $\Delta x \in \{0{.}1,\ 0{.}05,\ 0{.}025\}$ a $\Delta t = \Delta x^2 / 4$ do času $T = 1$. Výsledky se porovnávají s nejjemnější sítí.
 
 ## Výsledky
 
-Při $T = 1$, $a = 7$ je prakticky celá pravděpodobnost stále uvnitř oblasti – tunelovací únik začíná být patrný přibližně od $t \approx 1{,}4$. Asymetrie plyne z počáteční polohy balíku u $x = 1$, blíže pravé jámě potenciálu.
+Při $T = 1$, $a = 7$ je prakticky celá pravděpodobnost stále uvnitř oblasti – tunelovací únik začíná být patrný přibližně od $t \approx 1{.}4$. Asymetrie plyne z počáteční polohy balíku u $x = 1$, blíže pravé jámě potenciálu.
 
 Zákon zachování $p + J_+ + J_- \approx 1$ je splněn s odchylkou řádu $10^{-3}$, která pochází z absorpce na okrajích domény a numerické chyby druhého řádu.
 
