@@ -100,3 +100,10 @@ Program automaticky spustí tři simulace s $\Delta x \in \{0{,}1,\; 0{,}05,\; 0
 Při $T = 1$, $a = 7$ je prakticky celá pravděpodobnost stále uvnitř oblasti – tunelovací únik začíná být patrný přibližně od $t \approx 1{,}8$ (pravá hranice) a $t \approx 2{,}6$ (levá hranice). Asymetrie plyne z počáteční polohy balíku u $x = 1$, blíže pravé jámě potenciálu.
 
 Zákon zachování $p + J_+ + J_- \approx 1$ je splněn s odchylkou řádu $10^{-3}$, která pochází z absorpce na okrajích domény a numerické chyby druhého řádu.
+
+<img width="1330" height="730" alt="fig0_potential" src="https://github.com/user-attachments/assets/aa7e6d3c-680b-40ac-832a-3264749dc5ee" />
+
+<img width="2080" height="1181" alt="fig1_wave_functions" src="https://github.com/user-attachments/assets/d40d6c2c-234b-4b38-a78f-2aa9dc9dedf4" />
+
+<img width="1488" height="1622" alt="fig2_time_evolution" src="https://github.com/user-attachments/assets/4d2caa0d-8d7f-40ad-96b1-317cd2687154" />
+
