@@ -1,6 +1,6 @@
 # 1D Časově závislá Schrödingerova rovnice
 
-Numerické řešení 1D časově závislé Schrödingerovy rovnice metodou Crank-Nicolson s vizualizací výsledků v Pythonu.
+Numerické řešení 1D časově závislé Schrödingerovy rovnice (viz. http://utf.mff.cuni.cz/~cizek/numerika/Zapoctove_ulohy_2015.pdf) metodou Crank-Nicolson s vizualizací výsledků v Pythonu.
 
 ## Fyzikální popis
 
