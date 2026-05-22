@@ -14,7 +14,7 @@ $$\psi(x, 0) = \left(\frac{2}{\pi}\right)^{1/4} \exp\left[-(x-1)^2\right]$$
 
 a potenciálem (dvojitá bariéra s absorpčními okraji)
 
-$$V(x) = (x^2 - 1)\,e^{-x^2/4} - i\cdot 10^{-3}(|x|-8)^4\,   pro |x|>8$$
+$$V(x) = (x^2 - 1)\,e^{-x^2/4} - i\cdot 10^{-3}(|x|-8)^4\,$$   pro $$|x|>8$$
 
 Studuje se únik částice z potenciálové bariéry přes zákon zachování pravděpodobnosti:
 
