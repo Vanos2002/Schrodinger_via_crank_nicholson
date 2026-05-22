@@ -280,6 +280,6 @@ int main() {
         runSimulation(dx, dt, 1.0, prefix, false);   // jen do T=1 pro konvergenční studii
     }
 
-    std::cout << "\nVšechna data vygenerována. Spusťte python_plot.py\n";
+    std::cout << "\nVšechna data vygenerována. Spusťte plotting.py\n";
     return 0;
 }
