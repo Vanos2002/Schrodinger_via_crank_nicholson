@@ -72,10 +72,10 @@ python3 plotting.py
 
 | Soubor | Obsah |
 |---|---|
-| `fig0_potential.pdf` | Tvar potenciálu a počáteční vlnová funkce |
-| `fig1_wave_functions.pdf` | $\|\psi(x,t)\|^2$ pro $t = 0, 1, 2, 3, 4, 5$ + srovnání s volnou částicí |
-| `fig2_time_evolution.pdf` | Časový vývoj $p(T)$, $J_\pm(T)$, odchylka od zachování |
-| `fig3_convergence.pdf` | Konvergence $p$, $J_\pm$ při $T=1$, $a=7$ pro různá $\Delta x$ |
+| `fig0_potential.png` | Tvar potenciálu a počáteční vlnová funkce |
+| `fig1_wave_functions.png` | $\|\psi(x,t)\|^2$ pro $t = 0, 1, 2, 3, 4, 5$ + srovnání s volnou částicí |
+| `fig2_time_evolution.png` | Časový vývoj $p(T)$, $J_\pm(T)$, odchylka od zachování |
+| `fig3_convergence.png` | Konvergence $p$, $J_\pm$ při $T=1$, $a=7$ pro různá $\Delta x$ |
 
 ## Numerická metoda
 
